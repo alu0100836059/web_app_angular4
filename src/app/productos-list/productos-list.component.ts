@@ -4,6 +4,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 
 //Importamos el servicio
 import { ProductoService } from '../services/producto.service';
+import { Producto } from '../models/producto';
 
 @Component({
   selector: 'app-productos-list',
@@ -14,6 +15,7 @@ import { ProductoService } from '../services/producto.service';
 export class ProductosListComponent implements OnInit {
   
   public titulo:string;
+  public productos:Array<Producto>;
 
   constructor(
     private _route: ActivatedRoute,
@@ -25,7 +27,15 @@ export class ProductosListComponent implements OnInit {
 
   ngOnInit() {
     console.log('Se ha creado el componente PRODUCTOS-LIST');
-    alert(this._productoService.getProducto());
+    this._productoService.getProducto()
+      .subscribe(
+        result=> {
+          this.productos = result;
+        },
+        error => {
+          console.log(<any>error);
+        }
+      );
   }
 
 }

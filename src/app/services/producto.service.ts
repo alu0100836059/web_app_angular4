@@ -12,10 +12,11 @@ export class ProductoService{
     constructor(
         public _http: Http
     ){
-        this.url = 'http://localhost:8000/api/productos'
+        this.url = 'http://localhost:8000/api/'
     }
 
     getProducto(){
-        return "Texto desde producto.service.ts";
+        return this._http.get(this.url + 'productos')
+            .map(res => res.json());        
     }
 }

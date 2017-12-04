@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
 import { ProductosListComponent } from './productos-list/productos-list.component';
+import { ProductoAddComponent } from './producto-add/producto-add.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ProductosListComponent } from './productos-list/productos-list.componen
     AppComponent,
     HomeComponent,
     ErrorComponent,
-    ProductosListComponent
+    ProductosListComponent,
+    ProductoAddComponent
   ],
   imports: [
     BrowserModule,
