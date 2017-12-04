@@ -1,2 +1,23 @@
 <h3>{{titulo}}</h3>
 <hr>
+
+<form #formProducto="ngForm" (submit)="onSubmit()" id="formulario-add">
+    <label>Nombre
+        <span *ngIf="!nombre.valid && nombre.touched"
+            class="label label-danger">
+            El nombre es obligatorio :)        
+        </span>
+    </label>
+    <input type="text" #nombre="ngModel" name="nombre" 
+        [(ngModel)]="producto.nombre" class="form-control" required>
+    <label>Descripcion</label>
+    <textarea class="form-control" #descripcion="ngModel" 
+        name="descripcion" [(ngModel)]="producto.descripcion"></textarea>
+    <label>Precio</label>
+    <input type="text" class="form-control" #precio="ngModel" name="precio"
+        [(ngModel)]="producto.precio">
+    <label>Imagen</label>
+    <input type="file" class="form-control">
+
+    <input type="submit" value="{{titulo}}" class="btn btn-success">
+</form>

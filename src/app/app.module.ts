@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
-
+import { FormsModule } from '@angular/forms';
 
 //Rutas 
 import { routing, appRoutingProviders } from './app.routing';
@@ -24,7 +24,8 @@ import { ProductoAddComponent } from './producto-add/producto-add.component';
   imports: [
     BrowserModule,
     routing,
-    HttpModule
+    HttpModule,
+    FormsModule
   ],
   providers: [appRoutingProviders],
   bootstrap: [AppComponent]

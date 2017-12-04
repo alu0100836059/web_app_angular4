@@ -12,13 +12,18 @@ import { Producto } from '../models/producto';
 })
 export class ProductoAddComponent implements OnInit {
   public titulo: string;
+  public producto: Producto;
 
   constructor() { 
     this.titulo = 'Crear un nuevo producto';
+    this.producto = new Producto(0,'','','','');
   }
 
   ngOnInit() {
     console.log('Creado componente PRODUCTO-ADD.');
   }
 
+  onSubmit(){
+    console.log(this.producto);
+  }
 }
