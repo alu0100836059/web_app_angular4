@@ -7,13 +7,15 @@
     </header>
     <nav class="navbar navbar-inverse bg-light">
 
-          <a class="nav-item nav-link active" href="#">Home</a>
-          <a class="nav-item nav-link" href="#">Productos</a>
+          <a class="nav-item nav-link active"  [routerLink]="['/home']"
+                    [routerLinkActive]="['activado']">Home</a>
+          <a class="nav-item nav-link" [routerLink]="['/productos']"
+                    [routerLinkActive]="['activado']">Productos</a>
           <a class="nav-item nav-link" href="#">Crear Producto</a>        
     </nav>
     <section id="main" class="col-lg-12">
       <!-- Componente actual -->
-      <h3>Dentro de la "seccion"</h3>
+      <router-outlet></router-outlet>
     </section>
     <div class="footer navbar-fixed-bottom col-lg-12">
       <p>Curso de Angular 4 footers</p>

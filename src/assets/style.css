@@ -21,4 +21,15 @@
     font-size: 30px;
 }
 
+#main {
+    margin-top: 30px;
+}
 
+#main .jumbotron {
+    border-radius: 10px;
+}
+
+.activado {
+    border-bottom: 1px solid rgba(255, 0, 0, 0.5);
+    border-radius: 50%;
+}
