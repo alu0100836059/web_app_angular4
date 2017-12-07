@@ -16,6 +16,7 @@ export class ProductosListComponent implements OnInit {
   
   public titulo:string;
   public productos:Array<Producto>;
+  public delete_confirmed;
 
   constructor(
     private _route: ActivatedRoute,
@@ -23,19 +24,44 @@ export class ProductosListComponent implements OnInit {
     private _productoService: ProductoService
   ) {
     this.titulo = 'Listado de productos';
+    this.delete_confirmed = false;
    }
 
   ngOnInit() {
-    console.log('Se ha creado el componente PRODUCTOS-LIST');
-    this._productoService.getProducto()
-      .subscribe(
-        result=> {
-          this.productos = result;
-        },
-        error => {
+   this.getProductos();
+  }
+
+  deleteConfirm(id){
+    this.delete_confirmed = id;
+  }
+
+  deleteCancel(){
+    this.delete_confirmed = null;
+  }
+
+  getProductos(){
+    this._productoService.getProductos()
+    .subscribe(
+      result=> {
+        this.productos = result;
+      },
+      error => {
+        console.log(<any>error);
+      }
+    );
+  }
+  onDeleteProducto(id){
+    this._productoService.deleteProducto(id)
+      .subscribe(response => {
+          if(response.code == 200){
+            this.getProductos();
+          }else{
+            alert('Ha sucedido un problema, intente recargar la página por favor');
+          }
+
+      }, error =>{
           console.log(<any>error);
-        }
-      );
+      });
   }
 
 }

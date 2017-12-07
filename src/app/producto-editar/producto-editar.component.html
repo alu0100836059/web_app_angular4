@@ -24,6 +24,10 @@
     <input type="text" class="form-control" #precio="ngModel" name="precio"
         [(ngModel)]="producto.precio" required>
     <label>Imagen</label>
+    <div *ngIf="is_edit">
+        <img src="http://localhost/api_jaco/storage/app/uploads/imagenes/{{producto.imagen}}"
+        style="width: 90px;height:90px">
+    </div>
     <input type="file" class="form-control" (change)="fileChangeEvent($event)">
 
     <input type="submit" value="{{titulo}}" [disabled]="!formProducto.form.valid" class="btn btn-success">

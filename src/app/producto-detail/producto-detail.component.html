@@ -1,0 +1,14 @@
+<div *ngIf="!producto">
+  <p>Cargando producto...</p>
+</div>
+<div class="row" *ngIf="producto">
+  <div class="col-lg-4">
+      <img src="http://localhost/api_jaco/storage/app/uploads/imagenes/{{producto.imagen}}"
+      style="width: 100%;height:182px">
+  </div>
+  <div class="col-lg-8">
+    <h3>{{producto.nombre}}</h3>
+    <p>{{producto.descripcion}}</p>
+    <p><strong>{{producto.precio}}</strong></p>
+  </div>
+</div>

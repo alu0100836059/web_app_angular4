@@ -5,10 +5,32 @@
   Cargando listado de productos
 </div>
 <div *ngIf="productos">
-  <ul>
-    <li *ngFor="let producto of productos">
-        <strong>{{producto.nombre}}</strong>
-        <p>{{producto.precio}}</p>
-    </li>
-  </ul>
+  <div class="row">
+    <div class="col-lg-3" *ngFor="let producto of productos" style="margin-bottom: 20px;">
+      <div class="thumbnail" style="min-height: 350px;">
+        <div *ngIf="producto.imagen">
+          <img src="http://localhost/api_jaco/storage/app/uploads/imagenes/{{producto.imagen}}"
+              style="width: 100%;height:182px">
+        </div>
+        <div class="caption" style="min-height: 80px;">
+          <strong>{{producto.nombre}}</strong>
+          <p>{{producto.precio}}</p>
+        </div>
+        <div>
+          <div *ngIf="delete_confirmed != producto.id">
+          <p>
+            <a [routerLink]="['/producto', producto.id]" class="btn btn-success" >Ver</a>
+            <a [routerLink]="['/editar-producto', producto.id]"  class="btn btn-info" >Editar</a>
+            <a (click)="deleteConfirm(producto.id)" class="btn btn-danger" style="color: white;" >Borrar</a>
+          </p>
+        </div>
+          <div class="deleteConfirmation" *ngIf="delete_confirmed == producto.id">
+            <a (click)="onDeleteProducto(producto.id)" class="btn btn-danger" style="color: white;">Quiero Eliminar</a>
+            <a (click)="deleteCancel()" class="btn btn-success" style="color: white;">Cancelar</a>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
 </div>
